@@ -1,0 +1,4 @@
+interface:
+  display_name: "闲鱼选品执行"
+  short_description: "使用闲鱼选品工作台执行父词扩展、采样初筛、机会评估和状态推进"
+  default_prompt: "使用 $xianyu-discover 读取工作台，优先处理重点方向的待初筛样本和机会缺口，记录判断、阶段及下一步。"

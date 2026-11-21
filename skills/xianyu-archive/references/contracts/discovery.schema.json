@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "properties": {
+    "contract": {
+      "const": "xianyu.discovery"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "batch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "product",
+              "seller"
+            ]
+          },
+          "platform_id": {
+            "type": "string",
+            "pattern": "^[0-9]+$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parent_keyword": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_paths": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "unknowns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "wish_count": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "display": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "precision": {
+                    "enum": [
+                      "exact",
+                      "abbreviated",
+                      "unknown"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "display",
+                  "precision"
+                ],
+                "additionalProperties": false
+              },
+              "views": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "display": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "precision": {
+                    "enum": [
+                      "exact",
+                      "abbreviated",
+                      "unknown"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "display",
+                  "precision"
+                ],
+                "additionalProperties": false
+              },
+              "product_sales": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "minimum": 0
+                  },
+                  "display": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "precision": {
+                    "enum": [
+                      "exact",
+                      "abbreviated",
+                      "unknown"
+                    ]
+                  }
+                },
+                "required": [
+                  "value",
+                  "display",
+                  "precision"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "wish_count",
+              "views",
+              "product_sales"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "candidate_id",
+          "kind",
+          "platform_id",
+          "url",
+          "display_name",
+          "parent_keyword",
+          "observed_at",
+          "reason",
+          "evidence_paths",
+          "unknowns",
+          "metrics"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "contract",
+    "schema_version",
+    "batch_id",
+    "created_at",
+    "candidates"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
